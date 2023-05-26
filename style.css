@@ -1,0 +1,49 @@
+body{
+    background-color: #D2D2D2;
+}
+
+.image{
+    display: flex;
+    margin: auto;
+    object-fit: contain;
+    max-width:600px;
+    max-height:300px;
+    aspect-ratio:16/9;
+}
+
+.text_accueil{
+    text-align: center;
+}
+
+.VideoAccueil{
+    margin: auto;
+    border-radius: 10px;
+    max-width: 1050;
+    max-height: 525px;
+    
+}
+
+.rechercher{
+   text-align: center;
+}
+
+.bouton button{
+
+    border-radius: 10px;
+    transition: 1s;
+    
+
+}
+
+.bouton button:hover{
+    color: #ffffff;
+    background-color: rgb(145, 145, 156);
+}
+
+.bouton{
+
+    margin-bottom:50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
