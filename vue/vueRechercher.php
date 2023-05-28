@@ -1,31 +1,27 @@
-<?php 
-                
-                if(isset($_POST['submitrecherche'])){
-
-                    $recherche = ucfirst($_POST['recherche']);
-                    $tableau = [];
-                    foreach($lesObjets->{'data'} as $key => $champion){
-                        $tableau[$key] = $champion->{'name'};
-                    }
-                    $champion = array_search($recherche,$tableau);
-                    $champion = $lesObjets->{'data'}->{$champion};
-                }
-?>
 <div class="container">
-    <br/>
-
-    <br/><br/>
-        <div class="row justify-content-center">
+    <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="rechercher" class="col-md-10">
                     <form method="POST">
-                        <label for="site-search">Chercher un champion :</label>
-                        <input type="search" id="Chercher-champion" name="recherche">
-                        <input type="submit" value="recherche" name="submitrecherche">
+                        <select name="champion">
+                            <option value="none">Choisir un Champion </option>
+                            <?php 
+                                foreach($lesObjets->{'data'} as $key => $champion){
+                                    echo '<option value="'.$champion->{'name'}.'">'.$champion->{'name'}.'</option>'; 
+                                }
+                            ?>
+                        </select>
+                        <input type="submit" value="rechercher">
                     </form>
                 </div>
-                <?php if(isset($champion)){ 
-                    echo "<table border = 2>
+            </div>
+            <br>
+            <br>
+            <br>
+                <?php if(isset($_POST['champion'])){ 
+                    foreach ($lesObjets->{'data'} as $key => $champion){
+                        if($_POST['champion'] == $champion->{'name'}){
+                            echo "<table border = 2>
                     <tr>
                         <th>Image</th> 
                         <th>Nom</th> 
@@ -58,11 +54,14 @@
                 
             
             echo ("</table");
+                }
+                    }
+                    
             ?>
                 </div>
-                <?php }else{
-                    
-                } ?>
+                <?php
+                    }
+                ?>
             </div>
         </div>
 </div
